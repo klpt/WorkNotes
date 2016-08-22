@@ -22,10 +22,10 @@ Num     Type           Disp Enb Address            What
 
 ParserState is an enum. 
 enum ParserState {
-	INIT, 				       	// 0
-	PARSING, 				      // 1
-	PARSING_FAILED, 		  // 2
-	PARSING_SUCCESSFUL		// 3
+	INIT,                  // 0
+	PARSING,               // 1
+	PARSING_FAILED,        // 2
+	PARSING_SUCCESSFUL     // 3
 }
 
 

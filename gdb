@@ -43,3 +43,18 @@ CurrentState = INIT
 
 References:
 https://sourceware.org/gdb/onlinedocs/gdb/Break-Commands.html
+
+
+----------------------------------------------------------------------------
+How to print bit flags in gdb
+----------------------------------------------------------------------------
+
+if entry.action & 0x1 // And it with the bit flag
+printf "PARSE "       // #def name of the flag 
+end
+if entry.action & 0x2
+printf "TO_LOWER "
+end
+printf "\n"
+end
+

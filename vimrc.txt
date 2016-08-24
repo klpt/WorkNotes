@@ -1,0 +1,144 @@
+"Keep your cursor centered vertically on the screen
+set so=7
+
+set wildmenu "Turn on WiLd menu
+
+set ruler "Always show current position
+
+
+set hid "Change buffer - without saving. Old buffer still available via 'ls'
+
+" Set backspace config
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+set ignorecase "Ignore case when searching
+set smartcase
+
+set hlsearch "Highlight search things
+
+set incsearch "Make search act like search in modern browsers
+set nolazyredraw "Don't redraw while executing macros 
+
+set magic "Set magic on, for regular expressions
+
+" No sound on errors
+set noerrorbells
+set novisualbell
+
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set smarttab
+
+set lbr
+set tw=500
+
+set ai "Auto indent
+set si "Smart indet
+set wrap "Wrap lines
+syntax enable "Enable syntax hl
+set hlsearch    " Also switch on highlighting the last used search pattern. 
+
+"colorscheme elflord
+colorscheme solarized
+
+set pastetoggle=<F2>
+set number
+set laststatus=2
+
+
+" commented the following 4 lines to work with solarized
+highlight ExtraWhitespace ctermbg=red guibg=red 
+match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red
+
+" This lets you move from one VSPLIT to another using Tab.
+nmap <Tab> <c-w><c-w><c-w>=
+set winwidth=90
+
+"Mapping the annoying F1 key to Esc Key
+map <F1> <Esc>
+imap <F1> <Esc>
+
+" ctags: Start from the current dir and if not found, go to parent.
+:set tags=./tags;
+:ab #i #include
+:ab #d #define
+
+" shortcut for taglist window
+" nnoremap <F12> :TlistToggle<CR><c-w><c-w>
+nmap <F8> :TagbarToggle<CR><c-w><c-w>
+
+"shortcut for yankring window
+nnoremap <silent> <F11> :YRShow<CR>
+
+"shortcut for nerdtree
+nnoremap <F3> :NERDTreeToggle<CR>
+
+" try to set fold marker...
+" doesnt work for some reason
+autocmd Filetype *.[ch]{,pp} call FoldPreprocessor()
+function! FoldPreprocessor()
+    set foldmarker=#ifdef,#endif
+    set foldmethod=marker
+endfunction
+
+
+"Vim visual mode doesnt highlight in TMUX. Use the following:
+"hi Visual term=reverse cterm=reverse guibg=Grey
+
+
+set bg=dark
+
+filetype indent plugin on
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+nnoremap <leader>f :CtrlP<CR>
+
+"ctrp (fuzzyfinder) support
+let g:ctrlp_max_files = 0
+set wildignore+=*bedrock**
+set wildignore+=*.o,*.so,*.swp,*.zip,tags,cscope.*,*.ko,*.order,*.symvers,*.mod.*,*.tags,*.gdb
+set wildignore+=*out,*.yml,*.files,*.pyc,*html*,*README*,*.txt,*.xls,*.doc,*.ems
+set wildignore+=export_syms,*.ems,buildpatterns,*gdb*,*.smf,*.fiji,*.thpl,*.xml,*.pdu,*.stest,*.pm,*.in,*.exp
+
+"Ignore bedrock directory
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\v[\/](bedrock|libxml2|libxslt|libcurl|test|smf|smfgen|zapifiles|san|sandev|freebsd)$'
+    \ }
+
+let g:ctrlp_lazy_update = 0
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_use_caching = 1
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_max_files = 50000
+let g:ctrlp_max_height = 20
+
+
+
+
+" Make the status line more useful
+
+set statusline =
+
+" Buffer number
+"set statusline +=[%n]
+
+" File description
+set statusline +=%f\ %h%m%r%w
+
+" Name of the current function (needs tagbar.vim)
+set statusline +=\ [%{tagbar#currenttag('%s','')}]
+
+" Total number of lines in the file
+"set statusline +=%=%-10L
+
+" Line, column and percentage
+set statusline +=%=%-14.(%l,%c%V%)\ %P
+
+map <F1> <Esc>
+imap <F1> <Esc>
